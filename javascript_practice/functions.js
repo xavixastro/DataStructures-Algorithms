@@ -314,6 +314,159 @@ console.log(contains("SORRY", "or")); // true
 console.log(contains("tangent", "gem")); // false
 console.log(contains("clock", "ok")); // false
 
+console.log('---------------------')
 
 
 
+// Write a function named `fiveMultiplesOf` that accepts a number as an argument. The function should
+// print out the first five multiples of the given number. The function doesn't need to return any
+// value. It should just print to the terminal.
+
+let fiveMultiplesOf = number => {
+    for (let i = 1; i <= 5; i++) {
+        console.log(number * i)
+    }
+}
+
+fiveMultiplesOf(7);
+// prints
+//  7
+//  14
+//  21
+//  28
+//  35
+
+fiveMultiplesOf(3);
+// prints
+//  3
+//  6
+//  9
+//  12
+//  15
+
+console.log('---------------------')
+
+
+// Write a function named `sumUpTo(max)` that accepts a max number as an argument. The function should
+// return the total sum of all whole numbers from 1 to the max, inclusive.
+//
+// For example, sumUpTo(4) should return 10 because 1 + 2 + 3 + 4 = 10.
+
+
+let sumUpTo = max => {
+    let sum = 0;
+    for (let i = 0; i <= max; i++) {
+        sum += i
+    }
+    return sum;
+}
+
+console.log(sumUpTo(4)); // 10
+console.log(sumUpTo(5)); // 15
+console.log(sumUpTo(2)); // 3
+
+console.log('---------------------')
+
+
+
+// Write a function named `noOhs` that accepts a string as an argument. The functions should print the
+// characters of the string one by one except the character 'o'. The function doesn't need to return
+// any value. It should just print to the terminal.
+
+let noOhs = str => {
+    for (let char of str) {
+        if (char !== 'o') console.log(char);
+    }
+}
+
+noOhs("code");
+// prints
+//  c
+//  d
+//  e
+
+noOhs("school");
+// prints
+//  s
+//  c
+//  h
+//  l
+
+console.log('---------------------')
+
+
+// Write a function named `oddSum(max)` that accepts a max number as an argument. The function should
+// return the total sum of all odd numbers from 1 to the max, inclusive.
+//
+// For example, oddSum(10) should return 25 because 1 + 3 + 5 + 7 + 9 = 25
+
+let oddSum = max => {
+    let sum = 0;
+    [...Array(max+1).keys()].forEach(ele => {
+        if (ele % 2 !== 0) sum += ele
+    })
+    return sum;
+}
+
+console.log(oddSum(10)); // 25
+console.log(oddSum(5)); // 9
+
+console.log('---------------------')
+
+
+
+// Write a function named `stringRepeater(str, num)` that accepts a string and a number as arguments.
+// The function should return a new string consisting of the `str` repeated `num` number of times.
+
+let stringRepeater = (str, num) => str.repeat(num);
+
+console.log(stringRepeater("q", 4)); // 'qqqq'
+console.log(stringRepeater("go", 2)); // 'gogo'
+console.log(stringRepeater("tac", 3)); // 'tactactac'
+
+console.log('---------------------')
+
+
+
+// Write a function named `productUpTo(max)` that accepts a max number as an argument. The function
+// should return the total product of all whole numbers from 1 to the max, inclusive. A product is a
+// number obtained from multiplying numbers together.
+//
+// For example, productUpTo(4) should return 24 because 1 * 2 * 3 * 4 = 24
+
+let productUpTo = max => [...Array(max+1).keys()].slice(1).reduce((acc, val) => acc * val);
+
+console.log(productUpTo(4)); // 24
+console.log(productUpTo(5)); // 120
+console.log(productUpTo(7)); // 5040
+
+console.log('---------------------')
+
+
+// Write a function named `divByEither(num1, num2, max)` that accepts three numbers as arguments. 
+// The function should print out all positive numbers less than max that are divisible by num1 or num2. 
+// The function doesn't need to return any value. It should just print to the terminal.
+
+let divByEither = (num1, num2, max) => {
+    for (let i = 1; i < max; i++){
+        if (i % num1 === 0 || i % num2 === 0) console.log(i);
+    }
+}
+
+divByEither(4, 3, 16);
+// prints
+//  3
+//  4
+//  6
+//  8
+//  9
+//  12
+//  15
+
+divByEither(7, 5, 20);
+// prints
+//  5
+//  7
+//  10
+//  14
+//  15
