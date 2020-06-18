@@ -62,3 +62,23 @@ let bsearch = (arr, target) => {
     }
 
 }
+
+
+// mergesort(arr) - receives an array, returns a sorted copy of the array 
+// by implementing merge sort sorting algorithm
+
+let merge = (arr1, arr2) => {
+    merged = []
+    while (arr1.length && arr2.length){
+        arr1[0] > arr2[0] ? merged.push(arr2.shift(1)) : merged.push(arr1.shift(1))
+    }
+    return merged.concat(arr1).concat(arr2);
+}
+
+let mergesort = arr => {
+    if (arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length / 2);
+    let left = arr.slice(0, mid);
+    let right = arr.slice(mid);
+    return merge(mergesort(left), mergesort(right))
+}
