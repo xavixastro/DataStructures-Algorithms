@@ -32,8 +32,8 @@ class Game {
     }
 
     isValidMove(startTowerIdx, endTowerIdx) {
-        debugger
         if (![0, 1, 2].includes(startTowerIdx) || ![0, 1, 2].includes(endTowerIdx)) return false;
+        if (startTowerIdx === endTowerIdx) return false;
         return (!this.towers[endTowerIdx].length || this.towers[startTowerIdx].slice(-1) < this.towers[endTowerIdx].slice(-1))
     }
 
@@ -48,20 +48,22 @@ class Game {
     }
 
     print(){
+        //JSON.stringify() method converts a JavaScript object or value to a JSON string,
         console.log(JSON.stringify(this.towers));
     }
 
 
     isWon(){
-        return (this.towers[1].length === 5 || this.towers[2].length === 5)
+        return (this.towers[1].length === 4 || this.towers[2].length === 4)
     }
 
     run(reader, completionCallback){
         this.promptMove(reader, (start, end) => {
 
-            if (!this.move(start, end)) console.log('Invalid move');
+            if (!this.move(start, end)) console.log('INVALID MOVE!');
 
             if (this.isWon()){
+                this.print();
                 console.log('YOU WON!');
                 completionCallback();
             } else {
@@ -74,12 +76,12 @@ class Game {
 
 
 function completion() {
-    reader.question("Play again? y or n: ", restartGame => {
+    rl.question("Play again? y or n: ", restartGame => {
         if (restartGame === "y") {
             g = new Game();
-            g.run(reader, completion);
+            g.run(rl, completion);
         } else {
-            reader.close();
+            rl.close();
         }
     });
 };
