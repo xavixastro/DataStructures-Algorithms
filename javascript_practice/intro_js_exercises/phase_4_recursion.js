@@ -46,3 +46,19 @@ let deepDup = arr => {
     })
     return newArr
 }
+
+// bsearch(arr, target) - receives a sorted array, 
+// returns the index of the target or - 1 if not found
+
+let bsearch = (arr, target) => {
+    let mid = Math.floor(arr.length / 2);
+    if (!arr.length) return -1;
+    if (arr[mid] === target) return mid;
+    if (arr[mid] > target) {
+        return bsearch(arr.slice(0, mid), target)
+    } else {
+        let result = bsearch(arr.slice(mid+1), target)
+        return (result === -1) ? result : mid + 1 + result;
+    }
+
+}
