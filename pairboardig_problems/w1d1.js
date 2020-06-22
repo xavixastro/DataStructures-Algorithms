@@ -26,7 +26,7 @@
 const robotMoves = str => {
     let xPos = 0;
     let yPos = 0;
-    str.forEach(ch => {
+    [...str].forEach(ch => {
         console.log(ch)
         switch (ch) {
             case 'U': xPos += 1; break;
@@ -38,8 +38,8 @@ const robotMoves = str => {
     return (xPos === 0 && yPos === 0)
 }
 
-console.log(robotMoves("UD"));
-console.log(robotMoves("LL"));
+// console.log(robotMoves("UD"));
+// console.log(robotMoves("LL"));
 
 
 // A self - dividing number is a number that is divisible by every digit it contains.
@@ -83,3 +83,79 @@ const findSelfDividingRange = (left, right) => {
     }
     return nums;
 }
+
+
+// Hard
+// In a 2 dimensional array grid, each value grid[i][j] represents the height of a building located there.
+// We are allowed to increase the height of any number of buildings, by any amount(the amounts can be different 
+// for different buildings).Height 0 is considered to be a building as well.
+
+// At the end, the "skyline" when viewed from all four directions of the grid, i.e.top, bottom, left, and right, 
+// must be the same as the skyline of the original grid.A city's skyline is the outer contour of the rectangles 
+// formed by all the buildings when viewed from a distance. See the following example.
+
+// What is the maximum total sum that the height of the buildings can be increased ?
+
+// Example
+// Input: grid = [[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]
+// Output: 35
+
+//make a copy of the array where all the values on each row are the highest number on that row
+// [8, 8, 8, 8]
+// [7, 7, 7, 7]
+// [9, 9, 9, 9]
+// [3, 3, 3, 3]
+//look for highest number on each column on original array HIGH
+// col 0 => 9
+// col 1 => 4
+// col 2 => 8
+// col 3 => 7
+//iterate through each column on copy arr and replace any numbers that are hight than HIGH
+// [8, 4, 8, 7]
+// [7, 4, 7, 7]
+// [9, 4, 8, 7]
+// [3, 3, 3, 3]
+//declare variable sum = 0
+//iterate through each [i, j] on my grid => sum += copy[i[j] - original[i][j]
+
+// const deepCopy = arr => {
+//     let copy = []
+//     arr.forEach(el =>{
+//         if (Array.isArray(el)){
+//             copy.push(deepCopy(el))
+//         } else {
+//             copy.push(el)
+//         }
+//     })
+//     return copy
+// }
+
+const skyline = grid => {
+    debugger
+    let copy = Array(grid.length)
+    for (let i = 0; i < copy.length; i++) {
+        copy[i] = Array(grid[i].length).fill(Math.max(...grid[i]))
+    }
+
+    for (let i = 0; i < grid.length; i++) {
+        let max = 0;
+        for (let j = 0; j < grid.length; j++) {
+            if (grid[j][i] > max) max = grid[j][i]
+        }
+        for (let j = 0; j < copy.length; j++) {
+            if (copy[j][i] > max) copy[j][i] = max
+        }
+    }
+
+    let sum = 0;
+
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid.length; j++) {
+            sum += (copy[i][j] - grid[i][j])
+        }
+    }
+
+    return sum;
+}
+
+console.log(skyline([[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]))
