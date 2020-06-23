@@ -158,4 +158,100 @@ const skyline = grid => {
     return sum;
 }
 
-console.log(skyline([[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]))
+// console.log(skyline([[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]))
+
+
+// Given an array of length N, with integer values between 0 and N(not including 0 or N), 
+// return any integer that appears in the array more than once, i.e.
+
+// [1, 2, 3, 3, 4] => 3
+// [3, 1, 2, 2, 5, 5] => 2 or 5(either is fine)
+// [0, 1, 2] => invalid input(can’t have 0)
+
+//create a tracker array of the same length + 1, fill it in with false
+//iterate through the input arr, if tracker[el] return el
+//return false after iterating through the entire array and not finding any duplicates
+
+const findDuplicate = (arr) => {
+    let tracker = Array(arr.length + 1).fill(false)
+    for (let i = 0; i < arr.length; i++) {
+        if (tracker[arr[i]]) return arr[i];
+        tracker[arr[i]] = true;
+    }
+    return -1;
+}
+
+// console.log(findDuplicate([0, 1, 2]));
+
+
+// Given a binary tree, return all root - to - leaf paths.For example, given the following binary tree:
+
+//         1
+//       /   \
+//      2     3
+//       \
+//        5
+
+// All root - to - leaf paths are: ["1->2->5", "1->3"]
+
+//start at root node and check children
+//if child has no children, return path
+//else recursively call function on children node
+
+class Node {
+    constructor(val){
+        this.val = val,
+        this.left = null, 
+        this.right = null
+    }
+}
+
+const findPaths = root => {
+    if (!root.left && !root.right) {
+        return [`${root.val}`]
+    } else if (!root.left){
+        return [`${root.val}->${findPaths(root.right)}`]
+    } else if (!root.right){
+        return [`${root.val}->${findPaths(root.left)}`]
+    } else {
+        return [`${root.val}->${findPaths(root.right)}`, `${root.val}->${findPaths(root.left)}`]
+    }
+}
+
+const binaryTree = new Node(1);
+binaryTree.left = new Node(2);
+binaryTree.right = new Node(3);
+binaryTree.left.left = new Node(5);
+
+// console.log(findPaths(binaryTree))
+
+
+// Given a string s, find the longest palindromic substring in s.
+
+// Example:
+// Input: "babad" Output: "bab" Note: "aba" is also a valid answer.
+// Example: Input: "cbbd" Output: "bb"
+
+//helper function isPalindrome?(str) => boolean
+//create variable to keep track of longest palindrome sub found
+//nested loop for each [i, j] sub call helper function
+//return longest pal sub
+
+const isPalindrome = str => {
+    return str === [...str].reverse().join('')
+}
+
+const findLongestPalindromicSubstring = str => {
+    let longest = "";
+    for (let i = 0; i < str.length-1; i++) {
+        for (let j = i+1; j < str.length; j++) {
+            let sub = str.slice(i, j + 1)
+            if (isPalindrome(sub) && sub.length > longest.length) longest = sub;
+        }
+    }
+    return longest
+}
+
+// console.log(findLongestPalindromicSubstring('babad'))
+// console.log(findLongestPalindromicSubstring('cbbd'))
+
