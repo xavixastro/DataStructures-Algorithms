@@ -10,7 +10,6 @@ const getDigitFrom = (num, pos) => {
 }
 
 function radixSort(arr) {
-    debugger
     if (!Array.isArray(arr)) return null;
     let maxDigits = getMaxDigits(arr);
     for (let i = 1; i <= maxDigits; i++) {
@@ -18,7 +17,11 @@ function radixSort(arr) {
         arr.forEach( el => {
             buckets[getDigitFrom(el, i)].push(el)
         })
-
+        let newArr = []
+        buckets.forEach(bucket => {
+            newArr = newArr.concat(bucket)
+        })
+        arr = newArr;
     }
     return arr;
 }
