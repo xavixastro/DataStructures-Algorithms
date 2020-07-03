@@ -40,17 +40,29 @@ class Queue {
             this.front = node;
             this.back = node;
         } else {
-            
+            this.back.next = node;
+            this.back = node;
         }
+        this.length++;
+        return this.length;
 
     }
 
     dequeue(){
-
+        if (!this.length) return null;
+        let node = this.front;
+        if (this.length === 1) {
+            this.front = null;
+            this.back = null;
+        } else {
+            this.front = this.front.next
+        }
+        this.length--;
+        return node.value;
     }
 
     size(){
-
+        return this.length;
     }
 
 }
