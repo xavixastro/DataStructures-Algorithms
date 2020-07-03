@@ -49,7 +49,21 @@ class Stack {
     }
 
     pop(){
-
+        if (!this.length) return null;
+        let prevTop = this.top;
+        if (this.length === 1) {
+            this.top = null;
+            this.bottom = null;
+        } else {
+            let newTop = this.bottom
+            while (newTop.next != this.top){
+                newTop = newTop.next;
+            }
+            this.top = newTop;
+            this.top.next = null;
+        }
+        this.length--;
+        return prevTop.value;
     }
 
     size(){
