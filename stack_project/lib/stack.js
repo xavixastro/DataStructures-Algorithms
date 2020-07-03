@@ -34,6 +34,28 @@ class Stack {
         this.length = 0;
     }
 
+    push(val){
+        let node = new Node(val);
+        if (!this.length) {
+            this.top = node;
+            this.bottom = node;
+        } else {
+            let prevTop = this.top;
+            prevTop.next = node;
+            this.top = node;
+        }
+        this.length++;
+        return this.length;
+    }
+
+    pop(){
+
+    }
+
+    size(){
+
+    }
+
 }
 
 exports.Node = Node;
