@@ -41,8 +41,8 @@ class Stack {
             this.bottom = node;
         } else {
             let prevTop = this.top;
-            prevTop.next = node;
             this.top = node;
+            this.top.next = prevTop;
         }
         this.length++;
         return this.length;
@@ -55,19 +55,15 @@ class Stack {
             this.top = null;
             this.bottom = null;
         } else {
-            let newTop = this.bottom
-            while (newTop.next != this.top){
-                newTop = newTop.next;
-            }
+            let newTop = this.top.next;
             this.top = newTop;
-            this.top.next = null;
         }
         this.length--;
         return prevTop.value;
     }
 
     size(){
-
+        return this.length;
     }
 
 }
