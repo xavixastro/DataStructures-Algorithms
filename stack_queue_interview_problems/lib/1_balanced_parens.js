@@ -77,14 +77,23 @@
 // -----------
 function balancedParens(str) {
     if (!str.length) return true;
-    let count = 0;
+    let countParens = 0;
+    let countBrackets = 0;
+    let countCurlys = 0;
     for (let i = 0; i < str.length; i++) {
         let ch = str[i];
-        if (ch === '(') count++;
-        if (ch === ')') count--;
-        if (count < 0) return false;
+        switch (ch) {
+            case '(': countParens++; break;
+            case ')': countParens--; break;
+            case '[': countBrackets++; break;
+            case ']': countBrackets--; break;
+            case '{': countCurlys++; break;
+            case '}': countCurlys--; break;
+            default: break;
+        }
+        if (countParens < 0 || countBrackets < 0 || countCurlys < 0) return false;
     }
-    return count === 0;
+    return (countParens === 0 && countBrackets === 0 && countCurlys === 0)
 }
 
 exports.balancedParens = balancedParens;
