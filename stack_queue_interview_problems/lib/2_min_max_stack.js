@@ -77,8 +77,8 @@ class MinMaxStack {
         this.top = null;
         this.bottom = null;
         this.length = 0;
-        this.minNode = null;
-        this.maxNode = null;
+        this.minStack = [];
+        this.maxStack = [];
     }
 
     push(val) {
@@ -86,14 +86,14 @@ class MinMaxStack {
         if (!this.top) {
             this.top = newNode;
             this.bottom = newNode;
-            this.minNode = newNode;
-            this.maxNode = newNode;
+            this.minStack.push(newNode);
+            this.maxStack.push(newNode);
         } else {
             const temp = this.top;
             this.top = newNode;
             this.top.next = temp;
-            if (newNode.value > this.maxNode.value) this.maxNode = newNode;
-            if (newNode.value < this.minNode.value) this.minNode = newNode;
+            if (newNode.value > this.maxStack[this.maxStack.length - 1].value) this.maxStack.push(newNode);
+            if (newNode.value < this.minStack[this.minStack.length - 1].value) this.minStack.push(newNode);
         }
         return ++this.length;
     }
@@ -108,6 +108,8 @@ class MinMaxStack {
         }
         this.top = this.top.next;
         this.length--;
+        if (temp.value === this.maxStack[this.maxStack.length - 1].value) this.maxStack.pop();
+        if (temp.value === this.minStack[this.minStack.length - 1].value) this.minStack.pop();
         return temp;
     }
 
@@ -116,11 +118,13 @@ class MinMaxStack {
     }
 
     min(){
-        return this.minNode;
+        if (!this.minStack.length) return null;
+        return this.minStack[this.minStack.length - 1];
     }
 
     max(){
-        return this.maxNode;
+        if (!this.maxStack.length) return null;
+        return this.maxStack[this.maxStack.length - 1];
     }
 }
 
