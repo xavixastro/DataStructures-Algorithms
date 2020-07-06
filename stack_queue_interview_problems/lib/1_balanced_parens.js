@@ -76,45 +76,45 @@
 // Let's code!
 // -----------
 function balancedParens(str) {
-    if (!str.length) return true;
-    let countParens = 0;
-    let countBrackets = 0;
-    let countCurlys = 0;
+    // if (!str.length) return true;
+    // let countParens = 0;
+    // let countBrackets = 0;
+    // let countCurlys = 0;
+    // for (let i = 0; i < str.length; i++) {
+    //     let ch = str[i];
+    //     switch (ch) {
+    //         case '(': countParens++; break;
+    //         case ')': countParens--; break;
+    //         case '[': countBrackets++; break;
+    //         case ']': countBrackets--; break;
+    //         case '{': countCurlys++; break;
+    //         case '}': countCurlys--; break;
+    //         default: break;
+    //     }
+    //     if (countParens < 0 || countBrackets < 0 || countCurlys < 0) return false;
+    // }
+    // return (countParens === 0 && countBrackets === 0 && countCurlys === 0)
+
+    let stack = []
+    let pairs = {
+        '(' : ')',
+        '[' : ']',
+        '{' : '}'
+    }
+
     for (let i = 0; i < str.length; i++) {
         let ch = str[i];
-        switch (ch) {
-            case '(': countParens++; break;
-            case ')': countParens--; break;
-            case '[': countBrackets++; break;
-            case ']': countBrackets--; break;
-            case '{': countCurlys++; break;
-            case '}': countCurlys--; break;
-            default: break;
+
+        if (pairs[ch]) {
+            stack.push(ch)
+        } else if (Object.values(pairs).includes(ch)) {
+            let closing = stack.pop();
+            if (pairs[closing] !== ch) return false;
         }
-        if (countParens < 0 || countBrackets < 0 || countCurlys < 0) return false;
     }
-    return (countParens === 0 && countBrackets === 0 && countCurlys === 0)
 
-    // const stack = [];
-    // const pairs = {
-    //     '(': ')',
-    //     '[': ']',
-    //     '{': '}'
-    // };
-
-    // for (let i = 0; i < str.length; i++) {
-    //     var char = str[i];
-
-    //     if (pairs[char]) {
-    //         stack.push(char);
-    //     } else if (char === '}' || char === ']' || char === ')') {
-    //         if (pairs[stack.pop()] !== char) {
-    //             return false;
-    //         }
-    //     }
-    // }
-
-    // return stack.length === 0;
+    return !stack.length;
 }
 
+balancedParens('(');
 exports.balancedParens = balancedParens;
