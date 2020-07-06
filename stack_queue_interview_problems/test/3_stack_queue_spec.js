@@ -55,7 +55,7 @@ describe('Problem 3: StackQueue', () => {
                 stack.push({ value: 'B', next: null });
                 stack.push({ value: 'C', next: null });
                 stack.push({ value: 'D', next: null });
-                stack.pop()
+                stack.pop();
                 expect(stack.pop().value).to.equal('C');
             });
         });
