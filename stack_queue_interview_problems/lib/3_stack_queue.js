@@ -79,6 +79,10 @@ class StackQueue {
     constructor(){
         this.stack = new Stack();
         this.helper = new Stack();
+        // this.inStack = new Stack();
+        // this.outStack = new Stack();
+        // this.front = null;
+        // this.back = null;
     }
 
     enqueue(val){
@@ -90,11 +94,37 @@ class StackQueue {
         while (this.helper.length) {
             this.stack.push(this.helper.pop());
         }
+        return this.stack.size();
+        // if (!this.inStack.size()){
+        //     this.front = node;            
+        //     this.back = node;            
+        //     this.inStack.push(node);
+        // } else {
+        //     this.back.next = node;
+        //     this.back = node;
+        //     this.inStack.push(node);
+        // }
+        // return this.inStack.size();
     }
 
     dequeue(){
         if (!this.stack.size()) return null;
         return this.stack.pop();
+
+        // if (!this.inStack.size()) return null;
+        // node = this.front;
+        // if (this.inStack.size() === 1) {
+        //     this.front = null;
+        //     this.back = null;
+        //     this.inStack.pop()
+        // } else {
+        //     this.front = this.front.next;
+        //     this.inStack.pop()
+
+        // }
+        // return node; 
+
+
     }
 
     size(){
