@@ -76,6 +76,31 @@ class Stack {
 class StackQueue {
     // TODO: Implement the StackQueue class!
 
+    constructor(){
+        this.stack = new Stack();
+        this.helper = new Stack();
+    }
+
+    enqueue(val){
+        let node = new Node(val);
+        while (this.stack.length) {
+            this.helper.push(this.stack.pop());
+        }
+        this.stack.push(node);
+        while (this.helper.length) {
+            this.stack.push(this.helper.pop());
+        }
+    }
+
+    dequeue(){
+        if (!this.stack.size()) return null;
+        return this.stack.pop();
+    }
+
+    size(){
+        return this.stack.size();
+    }
+
 };
 
 exports.Node = Node;
