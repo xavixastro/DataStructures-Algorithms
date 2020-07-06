@@ -76,7 +76,15 @@
 // Let's code!
 // -----------
 function balancedParens(str) {
-
+    if (!str.length) return true;
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        let ch = str[i];
+        if (ch === '(') count++;
+        if (ch === ')') count--;
+        if (count < 0) return false;
+    }
+    return count === 0;
 }
 
 exports.balancedParens = balancedParens;
