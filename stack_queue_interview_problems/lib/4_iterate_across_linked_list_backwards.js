@@ -34,7 +34,11 @@ function iterateAcrossLinkedListBackwards(linkedList) {
         stack.push(node.value);
         node = node.next;
     }
-    return stack.join(' -> ')
+    let str = ""
+    while (stack.length) {
+        stack.length === 1 ? str += stack.pop() : str += (stack.pop() + ' -> ')
+    }
+    return str;
 }
 
 exports.iterateAcrossLinkedListBackwards = iterateAcrossLinkedListBackwards;
