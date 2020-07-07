@@ -77,58 +77,63 @@ class StackQueue {
     // TODO: Implement the StackQueue class!
 
     constructor(){
-        this.stack = new Stack();
-        this.helper = new Stack();
-        // this.inStack = new Stack();
-        // this.outStack = new Stack();
-        // this.front = null;
-        // this.back = null;
+        // this.stack = new Stack();
+        // this.helper = new Stack();
+        this.inStack = new Stack();
+        this.outStack = new Stack();
+        this.front = null;
+        this.back = null;
     }
 
     enqueue(val){
         let node = new Node(val);
-        while (this.stack.length) {
-            this.helper.push(this.stack.pop());
-        }
-        this.stack.push(node);
-        while (this.helper.length) {
-            this.stack.push(this.helper.pop());
-        }
-        return this.stack.size();
-        // if (!this.inStack.size()){
-        //     this.front = node;            
-        //     this.back = node;            
-        //     this.inStack.push(node);
-        // } else {
-        //     this.back.next = node;
-        //     this.back = node;
-        //     this.inStack.push(node);
+        // while (this.stack.length) {
+        //     this.helper.push(this.stack.pop());
         // }
-        // return this.inStack.size();
+        // this.stack.push(node);
+        // while (this.helper.length) {
+        //     this.stack.push(this.helper.pop());
+        // }
+        // return this.stack.size();
+        debugger
+        if (!this.size()){
+            this.front = node;            
+            this.back = node;            
+        } else {
+            this.back.next = node;
+            this.back = node;
+        }
+        this.inStack.push(new Node(node.value));
+        return this.size();
     }
 
     dequeue(){
-        if (!this.stack.size()) return null;
-        return this.stack.pop();
+        // if (!this.stack.size()) return null;
+        // return this.stack.pop();
 
-        // if (!this.inStack.size()) return null;
-        // node = this.front;
-        // if (this.inStack.size() === 1) {
-        //     this.front = null;
-        //     this.back = null;
-        //     this.inStack.pop()
-        // } else {
-        //     this.front = this.front.next;
-        //     this.inStack.pop()
+        if (!this.size()) return null;
+      
+        if (this.size() === 1) {
+            this.front = null;
+            this.back = null;
+        } else {
+            this.front = this.front.next; 
+        }
+        
+        if (!this.outStack.size()){
+            while (this.inStack.size() > 0){
+                this.outStack.push(this.inStack.pop())
+            }
+        }
+        let node = this.outStack.pop();
 
-        // }
-        // return node; 
+        return node; 
 
 
     }
 
     size(){
-        return this.stack.size();
+        return this.inStack.size() + this.outStack.size();
     }
 
 };
@@ -136,3 +141,7 @@ class StackQueue {
 exports.Node = Node;
 exports.Stack = Stack;
 exports.StackQueue = StackQueue;
+
+let sq = new StackQueue();
+sq.enqueue(4);
+sq.enqueue(8);
