@@ -1,25 +1,26 @@
 const { TreeNode } = require('./tree_node');
 
+//Call Stack implementation - Recursive
+// function depthFirstSearch(root, targetVal) { 
+//     if (!root) return null;
+//     if (root.val === targetVal) return root;
+//     return  depthFirstSearch(root.left, targetVal) || depthFirstSearch(root.right, targetVal)
+// }
 
-function depthFirstSearch(root, targetVal) { 
-    if (!root) return null;
-    if (root.val === targetVal) return root;
-    return  depthFirstSearch(root.left, targetVal) || depthFirstSearch(root.right, targetVal)
+//LIFO implementation
+function depthFirstSearch(root, targetVal) {
+    debugger
+    let stack = []
+    stack.push(root)
+    while (stack.length) {
+        let node = stack.pop()
+        if (node.val === targetVal) return node;
+        if (node.right) stack.push(node.right);
+        if (node.left) stack.push(node.left);
+    }
+    return null;
 }
 
-let a = new TreeNode('a');
-let b = new TreeNode('b');
-let c = new TreeNode('c');
-let d = new TreeNode('d');
-let e = new TreeNode('e');
-let f = new TreeNode('f');
-a.left = b;
-a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
-
-depthFirstSearch(a, 'e')
 
 //           a
 //          / \
