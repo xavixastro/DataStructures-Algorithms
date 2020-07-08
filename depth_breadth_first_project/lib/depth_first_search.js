@@ -1,25 +1,25 @@
-function depthFirstSearch(root, targetVal) { //a, 'e'//b, 'e'//d, 'e'
-    // if (!root) return null;
-    // if (root.value === targetVal) {
-    //     return root; }
-    // else {
-    //     if (root.left) depthFirstSearch(root.left, targetVal)
-    //     if (root.right) depthFirstSearch(root.rigth, targetVal)
-    //     return null;
-    // }
-    let stack = [root];
+const { TreeNode } = require('./tree_node');
 
-    while (stack.length) {
-        let node = stack.pop();
 
-        if (node.val === targetVal) return node;
-
-        if (node.right) stack.push(node.right);
-        if (node.left) stack.push(node.left);
-    }
-
-    return null;
+function depthFirstSearch(root, targetVal) { 
+    if (!root) return null;
+    if (root.val === targetVal) return root;
+    return  depthFirstSearch(root.left, targetVal) || depthFirstSearch(root.right, targetVal)
 }
+
+let a = new TreeNode('a');
+let b = new TreeNode('b');
+let c = new TreeNode('c');
+let d = new TreeNode('d');
+let e = new TreeNode('e');
+let f = new TreeNode('f');
+a.left = b;
+a.right = c;
+b.left = d;
+b.right = e;
+c.right = f;
+
+depthFirstSearch(a, 'e')
 
 //           a
 //          / \
