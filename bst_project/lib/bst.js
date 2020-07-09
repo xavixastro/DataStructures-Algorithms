@@ -9,10 +9,10 @@ class TreeNode {
 
 class BST {//tree
    constructor(){
-                  this.root = null; //10-left:5-right:16//
-                                    //5-left:null-right:null//
-                                    //16-left:null-right:null//
-                }
+        this.root = null; //10-left:5-right:16//
+                        //5-left:null-right:null//
+                        //16-left:null-right:null//
+    }
 
    insert(val, root = this.root){ //(1)
        if (!root){
@@ -31,6 +31,19 @@ class BST {//tree
                 }
         }
    }
+
+   searchRecur(val, root = this.root) {
+       if (!root) return false;
+       if (root.val > val){
+         return this.searchRecur(val, root.left)  
+       } else if (root.val > val) {
+         return this.searchRecur(val, root.right);  
+       } else {
+           return true;
+       }
+   }
+
+
 }
 
 //let tree = new BST();
