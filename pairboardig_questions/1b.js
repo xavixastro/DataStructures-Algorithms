@@ -28,11 +28,13 @@ console.log(longest_common_substring('azzyigrjp', 'uirbhbvklazjkhjbjzzazjnazzkbh
 // Write a function that takes an array of integers and returns their sum. Use recursion.
 
 const sumRec = (arr) => {
-    return arr.reduce((acc, ele) => acc + ele, 0)
+    // return arr.reduce((acc, ele) => acc + ele, 0)
+    if (!arr.length) return 0;
+    return arr[0] + sumRec(arr.slice(1));
 }
 
 console.log(sumRec([1,2,3,4,5])); //15
 console.log(sumRec([5, 5, 5])); //15
 console.log(sumRec([])); //0
 console.log(sumRec([16, 2, 10, 7])); //35
-console.log(sumRec([1,1,,13])); //15
+console.log(sumRec([1,1,13])); //15
