@@ -28,5 +28,26 @@ const sillyYears = year => {
 
 console.log(sillyYears(1950));
 
+// pair_sum
+// Given an array of integers, return all pairs that sum up to a specified value k.
+// List the pairs in [min, max] order.
+
+const pairSum = (arr, k) => {
+    let pairs = [] 
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            let pair = [arr[i], arr[j]].sort();
+            if (pair[0] + pair[1] === k) pairs.push(pair);
+        }
+    }
+    return pairs; 
+}
+
+console.log(pairSum([1, 2, -1], 0)         ) //<Set: {[-1, 1]}>
+console.log(pairSum([1, 2, -1, -1], 0)     ) //<Set: {[-1, 1]}>
+console.log(pairSum([1, 2, -1, -1, -2], 0) ) //<Set: {[1, 1], [-2, 2]}>
+console.log(pairSum([1, 2, -1, -1, -2], 1) ) //<Set: {[-1, 2]}>
+console.log(pairSum([1, 2, -1, -1, -2], -1)) //<Set: {[-2, 1]}>
+
 
 
