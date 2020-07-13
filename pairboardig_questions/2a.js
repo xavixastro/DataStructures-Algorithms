@@ -16,7 +16,7 @@ const fibs = (num) => {
     // return arr;
 
     //Recursively
-    debugger
+    // debugger
     if (!num) return [];
     if (num === 1) return [0];
     if (num === 2) return [0, 1];
@@ -30,3 +30,30 @@ console.log(fibs(1));
 console.log(fibs(2));
 console.log(fibs(4));
 console.log(fibs(10));
+
+
+// isPalindrome
+// Write a JavaScript function that takes a string and returns true if it's a 
+// palindrome, false if it's not. Use JavaScript.
+
+// This solution takes less time and memory than rebuilding the string backward 
+// and comparing the two.
+
+const isPalindrome = str => {
+    debugger
+    if (!str.length) return true;
+    let i = 0;
+    while (i < str.length) {
+        if (str[i] != str[str.length - 1 - i]) return false;
+        i++;
+    }
+    return true;
+}
+
+console.log(isPalindrome('')); //true
+console.log(isPalindrome('solos')); //true
+console.log(isPalindrome('hello')); //false
+console.log(isPalindrome('kayak')); //true
+console.log(isPalindrome('mom')); //true
+console.log(isPalindrome('murdrum')); //true
+console.log(isPalindrome('karen')); //false
