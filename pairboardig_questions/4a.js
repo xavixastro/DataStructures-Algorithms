@@ -49,3 +49,7 @@ const largestContiguousSubsum = arr => {
 
     return largest;
 }
+
+console.log(largestContiguousSubsum([5000, -1000, 50, 5000]));
+console.log(largestContiguousSubsum([100, 5, -1000, 3000]));
+console.log(largestContiguousSubsum([100, 5, -1000, 100, -5, 100]));
