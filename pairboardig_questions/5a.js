@@ -33,3 +33,12 @@ let matrix =    [
 
 
 console.log(matrixRegionSum(matrix, [1,1], [2,2])); //13
+
+// merge_sort
+// Implement merge sort.
+
+
+const mergerSort = arr = {
+
+}
+
