@@ -37,25 +37,32 @@ console.log(matrixRegionSum(matrix, [1,1], [2,2])); //13
 // merge_sort
 // Implement merge sort.
 
+const merge = (left, right) => {
+    let merged = []
+    while (left.length && right.length) {
+        if (left[0] > right[0]) {
+            merged.push(right.shift());
+        } else {
+            merged.push(left.shift());
+        }
+    }
+    return [...merged, ...left, ...right];
+}
 
-const mergerSort = arr = {
-  if (arr.length < 2) return arr;
-
-  middle = arr.count / 2
-  left, right = arr.take(middle), arr.drop(middle)
-
-  sorted_left, sorted_right = merge_sort(left), merge_sort(right)
-
-  merge(sorted_left, sorted_right)
+const mergeSort = arr => {
+    if (arr.length <= 1) return arr;
+    let midIdx = Math.floor(arr.length / 2)
+    let left = arr.slice(0, midIdx);
+    let right = arr.slice(midIdx);
+    return merge(mergeSort(left), mergeSort(right));
 }
 
 
-def merge(left, right)
-  merged_array = []
-  until left.empty? || right.empty?
-    merged_array <<
-      ((left.first < right.first) ? (left.shift) : (right.shift))
-  end
+console.log(mergeSort([]));
+console.log(mergeSort([7]));
+console.log(mergeSort([8, 2]));
+console.log(mergeSort([9, 28, 6, 1, -9, 7, 8, 6, 23]));
 
-  merged_array + left + right
-end
+
+
+ 
