@@ -46,7 +46,10 @@ function longestPalindrome(str){
 }
 
 function isPalindrome(str){
-    return str === [...str].reverse().join('');
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== str[str.length - 1 - i]) return false;
+    }
+    return true;
 }
 
 console.log(longestPalindrome('acapella')) //=> [0, 2]
