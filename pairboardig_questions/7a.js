@@ -35,3 +35,16 @@ console.log(nonComparison2(arr));
 // against the sum of the array values.For example, for the array[4, 6, 8], index 0 
 // should be returned with 4 in 18 odds, index 1 should be returned with 6 in 18 odds, 
 // and index 2 should be return with 8 in 18 odds.Implement this in O(n) time.
+
+const randomIndex = arr => {
+    let sum = arr.reduce((acc, ele) => acc + ele); //18
+    let rand = Math.random(); //0.64
+    let chance = 0;
+    for (let i = 0; i < arr.length; i++) {
+        chance += (arr[i] / sum); //0.27
+        if (rand <= chance) return i;
+    }
+}
+
+
+console.log(randomIndex([1, 4, 13]))
