@@ -3,6 +3,14 @@
 // jumbled order. "Sort" this array in O(n) time.You should be able to do this without 
 // looking at the input.
 
+
+const nonComparison1 = arr => {
+    return [...arr.concat(undefined).keys()].slice(1)
+}
+
+let arr = [7, 3, 1, 6, 9, 2, 4, 5, 8]
+console.log(nonComparison1(arr));
+
 // Part 2: Say that I give you an array of length n with numbers in the range 1..N(N >= n).
 // Sort this array in O(n + N) time.You may use O(N) memory.
 
