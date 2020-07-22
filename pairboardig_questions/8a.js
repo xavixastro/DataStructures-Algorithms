@@ -27,6 +27,13 @@
     console.log(sumsUponSums2([4, 2, 0, 5, 1]));
 
 // Finally, how could you solve the problem in O(n), and also O(1) space ?
+// The expected sum of the first n numbers is(n + 1)(n / 2)
 
+    const sumsUponSums3 = arr => {
+        let sum = arr.reduce((acc, ele) => acc + ele);
+        return ((arr.length+1) * (arr.length/2)) - sum;
+    }
+
+    console.log(sumsUponSums3([4, 2, 0, 5, 1]));
 
 
