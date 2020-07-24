@@ -5,5 +5,22 @@
 // In terms of ammortized time, dequeue should be O(1).Prove that your solution accomplishes this.
 
 class StackQueue {
-    
+    constructor(){
+        this.inStack = [];
+        this.outStack = [];
+    }
+
+    enqueue(el){
+        this.inStack.push(el)
+    }
+
+    dequeue(){
+        if (!this.outStack.length){
+            while (this.inStack.length) {
+                this.outStack.push(this.inStack.pop())
+            }
+        } 
+        this.outStack.pop();
+    }
+
 }
