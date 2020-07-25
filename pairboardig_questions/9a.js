@@ -24,10 +24,10 @@ const fileList = hashDir => {
     let paths = [];
     Object.keys(hashDir).forEach(key => {
         if (hashDir[key] === true) {
-            paths.push(`/${key}`);
+            paths.push(`${key}`);
         } else {
             fileList(hashDir[key]).forEach(el => {
-                paths.push(`/${key}` + el);
+                paths.push(`${key}/` + el);
             })
         }
     })
