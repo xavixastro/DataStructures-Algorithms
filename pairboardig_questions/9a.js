@@ -21,7 +21,17 @@ files = {
 }
 
 const fileList = hashDir => {
-
+    let paths = [];
+    Object.keys(hashDir).forEach(key => {
+        if (hashDir[key] === true) {
+            paths.push(`/${key}`);
+        } else {
+            fileList(hashDir[key]).forEach(el => {
+                paths.push(`/${key}` + el);
+            })
+        }
+    })
+    return paths;
 }
 
 console.log(fileList(files)); //['a/b/c/d/e', 'a/b/c/f']
