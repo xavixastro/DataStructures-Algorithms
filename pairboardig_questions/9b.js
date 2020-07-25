@@ -49,10 +49,24 @@ console.log(findMissingNumber(arr1, arr2)) //9
 const interleaving = (str1, str2, str3) => {
     let idx1 = 0;
     let idx2 = 0;
+    let tieIdx = -1;
     for (let i = 0; i < str3.length; i++) {
-        if (str3[i] === str1[idx1]) {
+        if (str3[i] === str1[idx1] && str3[i] === str2[idx2]) {
+            if (tieIdx === -1) tieIdx = i;
+            idx1++;
+            idx2++;
+        }
+        else if (str3[i] === str1[idx1]) {
+            if (tieIdx != -1) {
+                idx2 = tieIdx;
+                tieIdx = -1;
+            }
             idx1++;
         } else if (str3[i] === str2[idx2]) {
+            if (tieIdx != -1) {
+                idx1 = tieIdx;
+                tieIdx = -1;
+            }
             idx2++;
         } else {
             return false;
