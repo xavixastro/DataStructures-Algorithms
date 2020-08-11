@@ -13,6 +13,11 @@
 // Your first version may use O(n) memory.Next, write a version which uses O(1) memory; 
 // you'll probably need a different approach.
 
-function methodCyclic(head) {
-    
+function methodCyclic(link) {
+    let root = link;
+    while (link.next) {
+        link = link.next;
+        if (link.next === root) return true;
+    }
+    return false;
 }
