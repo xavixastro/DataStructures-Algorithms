@@ -10,3 +10,11 @@ function isBst(node, min = null, max = null){
     return isBst(node.left, min, node.value) && isBst(node.right, node.value, max);
 
 }
+
+// findCommonAncestor
+// Find the lowest common ancestor of two nodes in a binary search tree.
+// Write the function in JS.Assume I give you both the root and the two nodes.
+
+function findCommonAncestor(root, nodeA, nodeB){
+
+}
