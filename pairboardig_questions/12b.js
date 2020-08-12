@@ -16,5 +16,22 @@ function isBst(node, min = null, max = null){
 // Write the function in JS.Assume I give you both the root and the two nodes.
 
 function findCommonAncestor(root, nodeA, nodeB){
+    let currentNode = root;
+    while (true) {
+        if (currentNode == nodeA || currentNode == nodeB) {
+            return currentNode;
+        }
 
+        let bothOnRight = ((currentNode.value < nodeA.value) &&
+            (currentNode.value < nodeB.value));
+        let bothOnLeft = ((currentNode.value > nodeA.value) &&
+            (currentNode.value > nodeB.value));
+        let onSameSide = bothOnRight || bothOnLeft;
+
+        if (!onSameSide) {
+            return currentNode;
+        }
+
+        currentNode = bothOnRight ? currentNode.right : currentNode.left;
+    }
 }
