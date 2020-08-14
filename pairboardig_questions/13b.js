@@ -6,6 +6,14 @@
 // iterating from 0 until the square root is going to be O(sqrt n), not O(n).However, we can do better!
 
 
-function squareRoot(){
-    
+function squareRoot(num){
+    let i = 1
+    while (true) {
+        if (i * i === num) return i;
+        i++;  
+    }
 }
+
+console.log(squareRoot(1));
+console.log(squareRoot(25));
+console.log(squareRoot(49));
