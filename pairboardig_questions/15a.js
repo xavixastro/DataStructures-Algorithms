@@ -8,6 +8,20 @@
 // Every value in the stream should have an equal probability of being sampled.
 
 
-function streamingSample(){
+function streamingSample(stream){
+
+    let sample = stream;
+    let numEls = 1;
+
+    while (true){
+        let nextValue = stream.nextValue;
+        if (nextValue === null) break;
+
+        let keepProb = 1 / (numEls + 1)
+        if (Math.random() < keepProb) sample = nextValue;
     
+        numEls += 1
+    }
+
+    return sample;
 }
