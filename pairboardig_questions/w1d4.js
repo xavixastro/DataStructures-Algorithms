@@ -10,5 +10,9 @@
 // You may assume all strings contain only lowercase letters a..z without whitespace or punctuation.
 
 function sort1(arr){
-
+    let array = new Array(arr.length + 1);
+    return [...array.keys()].slice(1);
 }
+
+
+console.log(sort1([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
