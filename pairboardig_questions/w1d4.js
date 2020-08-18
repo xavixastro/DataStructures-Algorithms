@@ -14,5 +14,17 @@ function sort1(arr){
     return [...array.keys()].slice(1);
 }
 
+function sort2(arr, maxVal){
+    let counts = new Array(maxVal + 1).fill(0);
+    arr.forEach(el => counts[el] += 1);
+    arr = []
+    counts.forEach((el, i) => {
+        for (let i = 0; i < el; i++) {
+            arr.push(i)
+        }
+    }) 
+    return arr
+}
 
 console.log(sort1([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
+console.log(sort2([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
