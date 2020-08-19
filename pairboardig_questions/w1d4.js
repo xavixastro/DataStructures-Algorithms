@@ -43,3 +43,23 @@ console.log(sort2([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
 // Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
 
 // It doesn't matter what you leave beyond the new length.
+
+function removeDuplicates(nums) {
+
+    if (nums.length === 0) return 0;
+
+    let i = 0;
+
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[j] !== nums[i]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+
+    return i + 1;
+
+}
+
+
+console.log(removeDuplicates([1, 1, 2]))
