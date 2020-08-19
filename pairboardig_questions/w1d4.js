@@ -28,3 +28,18 @@ function sort2(arr, maxVal){
 
 console.log(sort1([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
 console.log(sort2([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
+
+
+// Remove Duplicates from Sorted Array
+// Given a sorted array, remove the duplicates in -place such that each element appear 
+// only once and return the new length.
+
+// Do not allocate extra space for another array, you must do this by modifying the input 
+// array in -place with O(1) extra memory.
+
+// Example
+// Input: [1, 1, 2]
+
+// Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
+
+// It doesn't matter what you leave beyond the new length.
