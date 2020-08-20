@@ -99,5 +99,10 @@ console.log(mergeSort([5,3,1,7,8,3,5,7]))
 // Use less than O(n * n) time.
 
 function duplicates(array){
-    
+    let eles = {}
+    array.forEach(el => eles[el] = true);
+    return Object.keys(eles);
 }
+
+
+console.log(duplicates([2,3,4,6,2,1,3,5,63,2,1,5]));
