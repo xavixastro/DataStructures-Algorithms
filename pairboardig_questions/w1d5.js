@@ -11,4 +11,25 @@
 
 function makeChange(amount, coins){
 
+    let bestChange = [];
+
+    for (let i = 0; i < coins.length; i ++) {
+        let change = [];
+        let currentAmout = amount;
+        for (let j = i; j < coins.length; j++) {
+            let currentCoin = coins[j];
+            while (currentCoin <= currentAmout) {
+                change.push(currentCoin);
+                currentAmout -= currentCoin;
+            }
+        }
+        if (!bestChange.length || bestChange.length > change.length) bestChange = change;
+    }
+
+    return bestChange;
+
 }
+
+
+console.log(makeChange(14, [10, 7, 1]));
+console.log(makeChange(25, [10, 5, 1]));
