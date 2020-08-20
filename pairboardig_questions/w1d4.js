@@ -100,8 +100,15 @@ console.log(mergeSort([5,3,1,7,8,3,5,7]))
 
 function duplicates(array){
     let eles = {}
-    array.forEach(el => eles[el] = true);
-    return Object.keys(eles);
+    let copies = {}
+    array.forEach(el => {
+        if (eles[el]) {
+            copies[el] = true;
+        } else {
+            eles[el] = true;
+        }
+    });
+    return Object.keys(copies);
 }
 
 
