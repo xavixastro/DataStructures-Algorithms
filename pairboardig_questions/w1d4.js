@@ -82,9 +82,9 @@ function merge(left, right) {
     let merged = []
     while(left.length && right.length) {
         if (left[0] > right[0]){
-            merged.push(right.splice(0, 1));
+            merged.push(right.splice(0, 1)[0]);
         } else {
-            merged.push(left.splice(0, 1));
+            merged.push(left.splice(0, 1)[0]);
         }
     }
     return [...merged, ...left, ...right];
