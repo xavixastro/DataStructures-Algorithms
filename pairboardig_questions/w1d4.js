@@ -63,3 +63,11 @@ function removeDuplicates(nums) {
 
 
 console.log(removeDuplicates([1, 1, 2]))
+
+
+// merge_sort
+// Implement merge sort.
+
+function mergeSort(arr) {
+    
+}
