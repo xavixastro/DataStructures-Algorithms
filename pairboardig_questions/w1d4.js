@@ -19,7 +19,7 @@ function sort2(arr, maxVal){
     arr.forEach(el => counts[el] += 1);
     arr = []
     counts.forEach((el, i) => {
-        for (let i = 0; i < el; i++) {
+        for (let j = 0; j < el; j++) {
             arr.push(i)
         }
     }) 
@@ -27,7 +27,7 @@ function sort2(arr, maxVal){
 }
 
 console.log(sort1([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
-console.log(sort2([8,2,5,4,1,6,7,3])) // [1,2,3,4,5,6,7,8]
+console.log(sort2([8,2,5,4,1,6,7,3], 8)) // [1,2,3,4,5,6,7,8]
 
 
 // Remove Duplicates from Sorted Array
