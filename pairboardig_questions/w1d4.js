@@ -92,3 +92,12 @@ function merge(left, right) {
 
 
 console.log(mergeSort([5,3,1,7,8,3,5,7]))
+
+
+// duplicates(from LeanData)
+// Write a method that takes an array and returns its duplicate values.
+// Use less than O(n * n) time.
+
+function duplicates(array){
+    
+}
