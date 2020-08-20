@@ -78,6 +78,17 @@ function mergeSort(arr) {
     return merge(mergeSort(left), mergeSort(right))
 }
 
-function merge() {
-    
+function merge(left, right) {
+    let merged = []
+    while(left.length && right.length) {
+        if (left[0] > right[0]){
+            merged.push(right.splice(0, 1));
+        } else {
+            merged.push(left.splice(0, 1));
+        }
+    }
+    return [...merged, ...left, ...right];
 }
+
+
+console.log(mergeSort([5,3,1,7,8,3,5,7]))
