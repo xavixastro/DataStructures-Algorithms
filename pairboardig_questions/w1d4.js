@@ -69,5 +69,15 @@ console.log(removeDuplicates([1, 1, 2]))
 // Implement merge sort.
 
 function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+
+    let midIdx = Math.floor(arr.length / 2);
+    let left = arr.slice(0, midIdx);
+    let right = arr.slice(midIdx);
+
+    return merge(mergeSort(left), mergeSort(right))
+}
+
+function merge() {
     
 }
