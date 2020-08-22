@@ -168,3 +168,17 @@ console.log(intToRoman(100));
 console.log(intToRoman(300));
 console.log(intToRoman(305));
 console.log(intToRoman(1502));
+
+
+// Solution
+// Part 1
+
+// def intToRoman(num)
+// m = ["", "M", "MM", "MMM"]
+// c = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+// x = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+// i = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+// m[num / 1000] + c[(num % 1000) / 100] + x[(num % 100) / 10] + i[num % 10]
+// end
+
+// p intToRoman(1916) == 'MCMXVI'
