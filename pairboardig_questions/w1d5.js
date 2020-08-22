@@ -126,3 +126,21 @@ unsortedScores = [37, 89, 41, 65, 91, 53]
 highestPossibleScore = 100
 
 console.log(sortScores(unsortedScores, highestPossibleScore));
+
+
+// Roman Numerals
+// (Part 1)
+// Given an integer between 1 - 3999, convert it to a roman numeral.
+
+// (Part 2)
+// Given a roman numeral between 1 - 3999, convert it to an integer.
+
+
+function intToRoman(num) {
+
+}
+
+
+function RomanToInt(num) {
+    
+}
