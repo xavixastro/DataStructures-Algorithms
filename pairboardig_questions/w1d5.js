@@ -137,10 +137,34 @@ console.log(sortScores(unsortedScores, highestPossibleScore));
 
 
 function intToRoman(num) {
+    if (num === 0) return "";
+    if (num === 1) return "I";
+    if (num === 2) return "II";
+    if (num === 3) return "III";
+    if (num === 4) return "IV";
+    if (num >= 1000) {
+        return "M" + intToRoman(num - 1000)
+    } else if (num >= 500) {
+        return "D" + intToRoman(num - 500)
+    } else if (num >= 100) {
+        return "C" + intToRoman(num - 100)
+    } else if (num >= 50) {
+        return "L" + intToRoman(num - 50)
+    } else if (num >= 10) {
+        return "X" + intToRoman(num - 10)
+    } else if (num >= 5) {
+        return "V" + intToRoman(num - 5)
+    }
 
 }
 
-
-function RomanToInt(num) {
-    
-}
+console.log('--------------------')
+console.log(intToRoman(0));
+console.log(intToRoman(1));
+console.log(intToRoman(2));
+console.log(intToRoman(5));
+console.log(intToRoman(15));
+console.log(intToRoman(100));
+console.log(intToRoman(300));
+console.log(intToRoman(305));
+console.log(intToRoman(1502));
