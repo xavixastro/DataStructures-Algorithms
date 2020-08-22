@@ -110,5 +110,19 @@ console.log(makeChange(25, [10, 5, 1]));
 // # returns[37, 41, 53, 65, 89, 91]
 
 function sortScores(unsortedScores, highestPossibleScore) {
-    
+    let scores = Array(highestPossibleScore + 1).fill(0);
+    unsortedScores.forEach(score => scores[score] += 1);
+    let sorted = [];
+    scores.forEach((amount, score) => {
+        while (amount > 0) {
+            sorted.push(score);
+            amount--;
+        }
+    })
+    return sorted;
 }
+
+unsortedScores = [37, 89, 41, 65, 91, 53]
+highestPossibleScore = 100
+
+console.log(sortScores(unsortedScores, highestPossibleScore));
