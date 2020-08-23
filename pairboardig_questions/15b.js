@@ -10,10 +10,21 @@
 
 function median(arr1, arr2) {
 
-    let median = null;
-    let smallest = arr1[0] < arr2[0] ? arr1.shift() : arr2.shift();
-    let highest = arr1[arr1.length - 1] > arr2[arr2.length - 1] ? arr1.pop() : arr2.pop();
 
-    
+    let median1;
+    if (arr1.length % 2 === 0) {
+        median1 = (arr1[arr1.length / 2] + arr1[arr1.length / 2]) / 2
+    } else {
+        median1 = arr1[Math.floor(arr1.length / 2)]
+    }
+
+
+    let median2;
+    if (arr2.length % 2 === 0) {
+        median2 = (arr2[arr2.length / 2] + arr2[arr2.length / 2]) / 2
+    } else {
+        median2 = arr2[Math.floor(arr2.length / 2)]
+    }
+
 
 }
