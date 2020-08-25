@@ -10,11 +10,16 @@
 
 function median(arr1, arr2) {
 
-
     let median1 = findMedian(arr1)
     let median2 = findMedian(arr2)
-    
 
+    if (median1 === median2) {
+        return median1
+    } else {
+        arr1 = arr1.filter(el => el > median1 && el < median2)
+        arr2 = arr2.filter(el => el > median1 && el < median2)
+        return median(arr1, arr2)
+    }
 }
 
 
