@@ -11,20 +11,17 @@
 function median(arr1, arr2) {
 
 
-    let median1;
-    if (arr1.length % 2 === 0) {
-        median1 = (arr1[arr1.length / 2] + arr1[arr1.length / 2]) / 2
+    let median1 = findMedian(arr1)
+    let median2 = findMedian(arr2)
+    
+
+}
+
+
+function findMedian(arr) {
+    if (arr.length % 2 === 0) {
+        return (arr[arr.length / 2] + arr[arr.length / 2]) / 2
     } else {
-        median1 = arr1[Math.floor(arr1.length / 2)]
+        return arr[Math.floor(arr.length / 2)]
     }
-
-
-    let median2;
-    if (arr2.length % 2 === 0) {
-        median2 = (arr2[arr2.length / 2] + arr2[arr2.length / 2]) / 2
-    } else {
-        median2 = arr2[Math.floor(arr2.length / 2)]
-    }
-
-
 }
