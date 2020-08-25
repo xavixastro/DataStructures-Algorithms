@@ -10,7 +10,13 @@
 
 function median(arr1, arr2) {
 
-    debugger
+    if (arr1.length == 1 && !arr2.length) {
+        return arr1[0];
+    } else if (arr2.length == 1 && !arr1.length) {
+        return arr2[0];
+    } else if (arr1.length == 1 && arr2.length === 1) {
+        return (arr1[0] + arr2[0]) / 2;
+    }
 
     let median1 = findMedian(arr1)
     let median2 = findMedian(arr2)
@@ -37,5 +43,5 @@ function findMedian(arr) {
     }
 }
 
-// console.log(median([1, 3, 6, 7], [1, 3, 6, 9]))
+console.log(median([1, 3, 6, 7], [1, 3, 6, 9]))
 console.log(median([1, 3, 3, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 8, 9]))
