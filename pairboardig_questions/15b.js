@@ -13,6 +13,10 @@ function median(arr1, arr2) {
     let median1 = findMedian(arr1)
     let median2 = findMedian(arr2)
 
+    if (median1 > median2) {
+        [median1, median2] = [median2, median1];
+    }
+
     if (median1 === median2) {
         return median1
     } else {
@@ -30,3 +34,5 @@ function findMedian(arr) {
         return arr[Math.floor(arr.length / 2)]
     }
 }
+
+console.log(median([1, 3, 3, 6, 7, 8, 9], [1, 2, 3, 4, 5, 6, 8, 9]))
